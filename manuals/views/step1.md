@@ -407,25 +407,27 @@ Configuration is pretty easy, you will catch it by just looking on an example:
 @@ -1,15 +1,20 @@
  ┊ 1┊ 1┊import { NgModule, ErrorHandler } from '@angular/core';
 +┊  ┊ 2┊import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
- ┊ 2┊ 3┊import { MyApp } from './app.component';
- ┊ 3┊ 4┊
- ┊ 4┊ 5┊@NgModule({
- ┊ 5┊ 6┊  declarations: [
- ┊ 6┊ 7┊    MyApp
- ┊ 7┊ 8┊  ],
-+┊  ┊ 9┊  imports: [
-+┊  ┊10┊    IonicModule.forRoot(MyApp),
-+┊  ┊11┊  ],
-+┊  ┊12┊  bootstrap: [IonicApp],
- ┊ 8┊13┊  entryComponents: [
- ┊ 9┊14┊    MyApp
- ┊10┊15┊  ],
- ┊11┊16┊  providers: [
--┊12┊  ┊    { provide: ErrorHandler }
-+┊  ┊17┊    { provide: ErrorHandler, useClass: IonicErrorHandler }
- ┊13┊18┊  ]
- ┊14┊19┊})
- ┊15┊20┊export class AppModule {}🚫↵
+ ┊ 2┊ 3┊import {BrowserModule} from "@angular/platform-browser";
+ ┊ 3┊ 4┊import { MyApp } from './app.component';
+ ┊ 4┊ 5┊
+ ┊ 5┊ 6┊@NgModule({
+ ┊ 6┊ 7┊  declarations: [
+ ┊ 7┊ 8┊    MyApp
+ ┊ 8┊ 9┊  ],
++┊  ┊10┊  imports: [
++┊  ┊11┊    IonicModule.forRoot(MyApp),
+ ┊  ┊12┊   BrowserModule
++┊  ┊13┊  ],
++┊  ┊14┊  bootstrap: [IonicApp],
+ ┊ 9┊15┊  entryComponents: [
+ ┊10┊16┊    MyApp
+ ┊11┊17┊  ],
+ ┊12┊18┊  providers: [
+-┊13┊  ┊    { provide: ErrorHandler }
++┊  ┊19┊    { provide: ErrorHandler, useClass: IonicErrorHandler }
+ ┊14┊20┊  ]
+ ┊15┊21┊})
+ ┊16┊22┊export class AppModule {}🚫↵
 ```
 
 ##### Changed client/main.html
